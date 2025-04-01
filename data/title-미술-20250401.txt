@@ -1,0 +1,3 @@
+rag=True
+modify=Frue
+title=현대미술의 커리큘럼만 짜줘 ( 서양화 제외 )

@@ -1,0 +1,67 @@
+{
+  "Comment": "Bedrock Knowledge Base 기반 커리큘럼 생성 워크플로우",
+  "StartAt": "FetchS3Data",
+  "States": {
+    "FetchS3Data": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${FetchS3DataLambdaArn}",
+        "Payload": {
+          "bucket.$": "$.bucket",
+          "titleKey.$": "$.titleKey",
+          "dataKey.$": "$.dataKey"
+        }
+      },
+      "ResultSelector": {
+        "bucket.$": "$.Payload.bucket",
+        "titleKey.$": "$.Payload.titleKey",
+        "dataKey.$": "$.Payload.dataKey",
+        "title.$": "$.Payload.title",
+        "data.$": "$.Payload.data"
+      },
+      "Next": "GenerateCurriculumWithKB"
+    },
+    "GenerateCurriculumWithKB": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${GenerateCurriculumLambdaArn}",
+        "Payload": {
+          "knowledgeBaseId": "${KnowledgeBaseId}",
+          "title.$": "$.title",
+          "data.$": "$.data",
+          "bucket.$": "$.bucket",
+          "titleKey.$": "$.titleKey"
+        }
+      },
+      "ResultSelector": {
+        "bucket.$": "$.Payload.bucket",
+        "titleKey.$": "$.Payload.titleKey",
+        "curriculum.$": "$.Payload.curriculum"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed"],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2.0
+        }
+      ],
+      "Next": "SaveCurriculum"
+    },
+    "SaveCurriculum": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${SaveCurriculumLambdaArn}",
+        "Payload": {
+          "bucket.$": "$.bucket",
+          "curriculum.$": "$.curriculum",
+          "titleKey.$": "$.titleKey"
+        }
+      },
+      "End": true
+    }
+  }
+} 

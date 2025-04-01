@@ -1,0 +1,168 @@
+인공지능(AI)의 역사, 머신러닝 기초, 딥러닝 개념, 자연어 처리
+
+1. 인공지능(AI)의 역사
+
+1.1 인공지능의 정의
+
+인공지능(AI, Artificial Intelligence)은 인간의 지능을 기계가 모방하는 기술로, 문제 해결, 학습, 추론 등을 수행할 수 있는 시스템을 의미한다. 이는 수학, 통계학, 컴퓨터 과학, 뇌 과학 등의 다양한 학문적 기초 위에서 발전하였다.
+
+1.2 AI의 발전 단계
+
+초기 AI 연구(1950-1970년대)
+
+앨런 튜링(Alan Turing): "튜링 테스트" 개념 제안
+
+존 매카시(John McCarthy): "Artificial Intelligence" 용어 최초 사용 (1956년 다트머스 회의)
+
+초기 규칙 기반 시스템과 퍼셉트론(Perceptron) 개발
+
+신경망의 개념이 등장했으나 연산력 부족으로 제한적 성과
+
+AI 겨울(1970-1980년대)
+
+기대와 성과 간의 괴리로 인해 연구 자금 감소
+
+엑스퍼트 시스템(Expert System)의 부상
+
+연산량 증가로 인한 실용적 한계 도달
+
+머신러닝과 신경망의 발전(1990-2010년대)
+
+빅데이터와 컴퓨팅 파워 증가로 인해 AI 연구 활성화
+
+서포트 벡터 머신(SVM), 랜덤 포레스트(Random Forest) 등의 기법 등장
+
+딥러닝(Deep Learning) 기술의 부상 (ex: LeNet-5, AlexNet, ResNet 등)
+
+GPU를 활용한 병렬 연산이 가능해지면서 신경망 학습 속도가 향상됨
+
+현대 AI(2010년 이후)
+
+자연어 처리(NLP) 기술 발전 (ex: Transformer, BERT, GPT 등)
+
+생성형 AI (Generative AI)와 자율주행, 의료 AI 등의 응용 확대
+
+대규모 사전 학습 모델(Pre-trained Model)의 확산
+
+강화학습과 AI 윤리에 대한 논의 활성화
+
+2. 머신러닝 기초
+
+2.1 머신러닝의 개념
+
+머신러닝(Machine Learning)은 데이터에서 패턴을 학습하여 예측 및 의사 결정을 자동화하는 알고리즘을 연구하는 분야이다. 전통적인 프로그래밍 방식과 달리, 명시적인 규칙을 코드로 정의하는 대신 데이터에서 패턴을 찾고 이를 활용하여 예측 모델을 구축한다.
+
+2.2 머신러닝의 유형
+
+지도학습(Supervised Learning)
+
+정답(label)이 있는 데이터로 학습
+
+예시: 이미지 분류, 스팸 필터링, 금융 사기 탐지
+
+알고리즘: 선형 회귀(Linear Regression), 랜덤 포레스트(Random Forest), 신경망(Neural Networks)
+
+비지도학습(Unsupervised Learning)
+
+정답(label)이 없는 데이터에서 패턴을 탐색
+
+예시: 클러스터링(Clustering), 차원 축소(Dimensionality Reduction), 이상 탐지
+
+알고리즘: K-means, PCA(주성분 분석), DBSCAN
+
+강화학습(Reinforcement Learning)
+
+보상 기반 학습, 에이전트가 환경과 상호작용하며 최적의 행동을 학습
+
+예시: 게임 AI, 로봇 제어, 금융 트레이딩
+
+알고리즘: Q-learning, DQN, PPO, SAC
+
+3. 딥러닝 개념
+
+3.1 딥러닝의 정의
+
+딥러닝(Deep Learning)은 다층 신경망(Deep Neural Networks)을 활용하여 복잡한 패턴을 학습하는 기계 학습 기술이다. 전통적인 머신러닝과 달리, 대량의 데이터를 이용하여 특징을 자동 추출하는 능력이 있다.
+
+3.2 주요 신경망 구조
+
+인공 신경망(ANN, Artificial Neural Networks)
+
+뉴런(Neuron)으로 구성된 계층 구조
+
+활성화 함수(ReLU, Sigmoid, Tanh 등)를 통해 비선형성을 도입
+
+입력층(Input Layer) - 은닉층(Hidden Layer) - 출력층(Output Layer)
+
+합성곱 신경망(CNN, Convolutional Neural Networks)
+
+이미지 처리에 특화된 신경망
+
+특징 추출을 위한 합성곱(Convolution)과 풀링(Pooling) 연산 사용
+
+예시: ResNet, VGG, EfficientNet, MobileNet
+
+순환 신경망(RNN, Recurrent Neural Networks)
+
+시계열 데이터 및 자연어 처리에 활용
+
+단점: 기울기 소실 문제(Gradient Vanishing)
+
+개선 모델: LSTM(Long Short-Term Memory), GRU(Gated Recurrent Unit)
+
+트랜스포머(Transformer) 모델
+
+자연어 처리에서 혁신적인 발전을 이끈 모델
+
+셀프 어텐션(Self-Attention) 메커니즘 활용
+
+예시: BERT, GPT, T5, RoBERTa
+
+4. 자연어 처리(NLP)
+
+4.1 자연어 처리 개요
+
+자연어 처리(NLP, Natural Language Processing)는 인간의 언어를 컴퓨터가 이해하고 처리할 수 있도록 하는 기술이다. 최근에는 대규모 언어 모델(LLM, Large Language Model)이 NLP 성능을 크게 향상시키고 있다.
+
+4.2 NLP의 주요 과제
+
+텍스트 토큰화(Tokenization)
+
+문장을 단어 또는 서브워드 단위로 분할
+
+예시: WordPiece, SentencePiece, Byte-Pair Encoding(BPE)
+
+품사 태깅(Pos Tagging) 및 구문 분석(Syntax Parsing)
+
+단어의 품사 및 문장 구조 분석
+
+개체명 인식(NER, Named Entity Recognition)
+
+텍스트에서 인물, 장소, 날짜 등의 개체 인식
+
+감성 분석(Sentiment Analysis)
+
+텍스트의 감정(긍정, 부정 등) 분석
+
+기계 번역(Machine Translation)
+
+한 언어에서 다른 언어로 변환 (ex: Google Translate, DeepL)
+
+4.3 최신 NLP 모델
+
+BERT(Bidirectional Encoder Representations from Transformers)
+
+양방향 문맥을 고려하는 사전 훈련 모델
+
+문장 간 관계를 이해하는 데 강점
+
+GPT(Generative Pre-trained Transformer)
+
+대규모 텍스트 생성을 위한 모델
+
+대화형 AI(ChatGPT) 등에 활용됨
+
+T5(Text-to-Text Transfer Transformer)
+
+모든 NLP 작업을 텍스트 변환 문제로 다루는 모델
+
