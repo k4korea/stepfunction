@@ -64,7 +64,7 @@ def generate_with_kb(knowledge_base_id, title, data, model_id):
 def generate_without_kb(title, data, model_id):
     """일반 Bedrock 모델을 사용하여 커리큘럼 생성"""
     
-    # 사용 가능한 모델 확인
+    # 사용 가능한 모델 확인 및 선택
     try:
         # 사용 가능한 모델 목록 가져오기
         bedrock = boto3.client('bedrock')
@@ -76,18 +76,16 @@ def generate_without_kb(title, data, model_id):
         # 지정된 모델이 사용 가능한지 확인
         if model_id not in available_models:
             print(f"지정된 모델 '{model_id}'을(를) 사용할 수 없습니다. 대체 모델을 사용합니다.")
-            # Claude 모델 찾기
-            claude_models = [m for m in available_models if 'claude' in m.lower()]
-            if claude_models:
-                model_id = claude_models[0]
+            
+            # 사용 가능한 모델 중 하나 선택
+            if available_models:
+                model_id = available_models[0]
                 print(f"대체 모델로 '{model_id}'을(를) 사용합니다.")
             else:
-                # 다른 모델 사용
-                model_id = available_models[0]
-                print(f"Claude 모델을 찾을 수 없습니다. '{model_id}'을(를) 사용합니다.")
+                raise Exception("사용 가능한 모델이 없습니다.")
     except Exception as e:
         print(f"모델 목록 가져오기 실패: {str(e)}")
-        # 기본 모델 사용
+        # 기본 모델 사용 (Amazon Titan Text)
         model_id = 'amazon.titan-text-express-v1'
         print(f"기본 모델 '{model_id}'을(를) 사용합니다.")
     

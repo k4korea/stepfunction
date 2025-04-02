@@ -408,14 +408,11 @@ def create_lambda_function(function_name, source_file=None):
     manager = LambdaFunctionManager()
     return manager.create_or_update_function(function_name, source_file)
 
-def add_bedrock_permissions_to_role():
+def add_bedrock_permissions_to_role(role_name='LambdaExecutionRole'):
     """Lambda 실행 역할에 Bedrock 권한 추가"""
     try:
         # IAM 클라이언트 생성
         iam_client = boto3.client('iam')
-        
-        # Lambda 실행 역할 이름 (기본값 또는 환경 변수에서 가져옴)
-        role_name = os.environ.get('LAMBDA_EXECUTION_ROLE', 'lambda-execution-role')
         
         # Bedrock 권한 정책 문서
         bedrock_policy = {
@@ -424,10 +421,9 @@ def add_bedrock_permissions_to_role():
                 {
                     "Effect": "Allow",
                     "Action": [
-                        "bedrock:InvokeModel",
-                        "bedrock:ListFoundationModels",
-                        "bedrock-agent-runtime:RetrieveAndGenerate",
-                        "bedrock-agent-runtime:Retrieve"
+                        "bedrock:*",
+                        "bedrock-runtime:*",
+                        "bedrock-agent-runtime:*"
                     ],
                     "Resource": "*"
                 }
@@ -437,7 +433,7 @@ def add_bedrock_permissions_to_role():
         # 인라인 정책 추가
         iam_client.put_role_policy(
             RoleName=role_name,
-            PolicyName='bedrock-access-policy',
+            PolicyName='bedrock-full-access-policy',
             PolicyDocument=json.dumps(bedrock_policy)
         )
         
