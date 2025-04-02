@@ -63,10 +63,15 @@ aws s3 cp ./data/data-천문학-20250401.txt s3://curriculum-bucket-20250331/inp
 
 python simplified_curriculum_workflow.py --title "프로그래밍" --data "Python, Java, C++, 알고리즘, 자료구조"
 
-
+# chatgpt 와 다른점
+1. 프롬프트의 형식을 저장하고 재사용 가능
+2. 외부 서비스로 확장이 가능
+3. 자동화 형식을 도입가능
 
 # 추가 작업 
 1. 토큰 4000 이상 처리 
 2. opensearch rag 연동 추가 
 3. 거꾸로 데이터의 패턴을 찾아서 커리큘럼및 프로프트의 퀄리티 높이기 
 4. 수정된 람다 펑션만 배포되게
+5. pdf,word 형식의 입출력
+6. sns , email 배포 및 트리거 추가 
